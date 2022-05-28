@@ -8,7 +8,7 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 var config = {
     imap: {
         user: 'bennisondevadoss@gmail.com',
-        password: 'bennison12082000',
+        password: 'xxxxxxxx',
         host: 'imap.gmail.com',
         port: 993,
         tls: true,
