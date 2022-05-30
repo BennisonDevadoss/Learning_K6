@@ -1,20 +1,18 @@
-import fs from 'fs';
+import fs from "fs";
 
-const fileName = '/home/bennison/myLearning/sipcot_loadtest/signin/token.txt'
-const tokens = fs.readFileSync(fileName,
-    { encoding: 'utf8', flag: 'a+' });
-console.log("tokens are", tokens)
+const fileName = "/home/bennison/myLearning/sipcot_loadtest/signin/token.txt";
+const tokens = fs.readFileSync(fileName, { encoding: "utf8", flag: "a+" });
+console.log("tokens are", tokens);
 
-const obj = [{
-    token: tokens
-}]
+const arraytoken = tokens.split("\n");
+arraytoken.pop();
+console.log(arraytoken);
+const obj = [];
+arraytoken.forEach((value) => {
+  obj.push({ token: value });
+});
 
+console.log(arraytoken.length);
+console.log("object is", obj);
 
-
-const dictstring = JSON.stringify(obj);
-var edit = dictstring.replace("\\r\\n", "");
-console.log("edit is ", edit)
-
-const fileName1 = "/home/bennison/myLearning/sipcot_loadtest/signin/bearerCredential.json"
-
-fs.writeFileSync(fileName1, edit, "UTF-8", { 'flags': 'w+' });
+fs.writeFileSync("bearerCredential.json", JSON.stringify(obj), "UTF-8", { flags: "w+" });
